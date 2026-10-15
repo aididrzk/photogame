@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Exposure Quest — Basic Photography Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome" aria-label="Exposure Quest home">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <span>EXPOSURE <b>QUEST</b></span>
+      </a>
+      <div class="top-meta"><span class="camera-dot"></span> PHOTO LAB · LEVEL 01</div>
+    </header>
+
+    <section id="homeScreen" class="screen home-screen">
+      <div class="hero-copy">
+        <p class="eyebrow">THE CAMERA IS IN YOUR HANDS</p>
+        <h1>Master the<br><span>Exposure Trio.</span></h1>
+        <p class="lead">ISO, shutter speed, and aperture work together to shape a photograph. Learn what each setting does by hitting the right answer targets.</p>
+        <div class="learning-card">
+          <span class="learning-icon" aria-hidden="true">✦</span>
+          <div><strong>Your mission</strong><p>Identify the job of each camera setting and choose the best setting for real shooting situations.</p></div>
+        </div>
+        <button id="playButton" class="primary-button">Start the quest <span aria-hidden="true">→</span></button>
+        <p class="microcopy">12 questions · untimed learning mode available · no camera required</p>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a camera and floating exposure controls">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="sun-glow"></div>
+        <div class="camera-illustration">
+          <div class="camera-top"></div><div class="camera-body"><div class="viewfinder"></div><div class="lens-outer"><div class="lens-mid"><div class="lens-core"></div></div></div><div class="camera-flash"></div></div>
+        </div>
+        <div class="float-tag tag-iso"><small>LIGHT SENSITIVITY</small><b>ISO</b></div>
+        <div class="float-tag tag-shutter"><small>MOTION</small><b>SHUTTER</b></div>
+        <div class="float-tag tag-aperture"><small>DEPTH OF FIELD</small><b>APERTURE</b></div>
+        <div class="spark spark-a">✦</div><div class="spark spark-b">✧</div><div class="spark spark-c">✦</div>
+      </div>
+      <div class="home-bottom"><span>LEARN BY PLAYING</span><span>01 / EXPOSURE BASICS</span></div>
+    </section>
+
+    <section id="instructionsScreen" class="screen instructions-screen hidden">
+      <p class="eyebrow">MISSION BRIEFING</p>
+      <h2>Ready, photographer?</h2>
+      <p class="lead narrow">Read each question, then select the answer target that best fits. Every hit teaches you something about exposure.</p>
+      <div class="instruction-grid">
+        <article class="instruction-card"><span class="instruction-number">01</span><div class="target-demo" aria-hidden="true"><i></i><i></i><i></i></div><h3>Choose a target</h3><p>Click, tap, or use Tab and Enter to select one of the three answer targets.</p></article>
+        <article class="instruction-card"><span class="instruction-number">02</span><div class="instruction-symbol" aria-hidden="true">✓</div><h3>Learn from feedback</h3><p>See why your answer is correct or incorrect. You can try again before moving on.</p></article>
+        <article class="instruction-card"><span class="instruction-number">03</span><div class="instruction-symbol" aria-hidden="true">★</div><h3>Build your score</h3><p>Earn learning points for correct answers. Speed does not affect your learning score.</p></article>
+      </div>
+      <div class="mode-row">
+        <div><strong>Choose your pace</strong><p>Untimed mode gives you as much time as you need.</p></div>
+        <label class="toggle-label"><input id="untimedToggle" type="checkbox" checked><span class="toggle-ui"></span><span>Untimed mode</span></label>
+      </div>
+      <div class="button-row"><button id="backHomeButton" class="secondary-button">← Home</button><button id="beginGameButton" class="primary-button">Enter the arena <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen hidden">
+      <div class="game-header">
+        <div><p class="eyebrow">EXPOSURE TRAINING ARENA</p><h2>Pick your answer.</h2></div>
+        <div class="stats">
+          <div><small>QUESTION</small><strong id="questionCounter">01 / 12</strong></div>
+          <div><small>LEARNING SCORE</small><strong id="scoreDisplay">0</strong></div>
+        </div>
+      </div>
+      <div class="progress-track" aria-label="Question progress"><div id="progressBar" class="progress-bar"></div></div>
+      <article class="question-panel">
+        <div class="question-type" id="questionType">CAMERA KNOW-HOW</div>
+        <h3 id="questionText">Loading question…</h3>
+        <p id="questionContext" class="question-context"></p>
+      </article>
+      <div class="arena-label"><span>ANSWER TARGETS</span><span id="paceLabel">UNTIMED MODE</span></div>
+      <div id="targetArena" class="target-arena">
+        <button class="answer-target" data-index="0"><span class="target-rings"><i></i><i></i><i></i><b>A</b></span><span class="target-label">Answer A</span></button>
+        <button class="answer-target" data-index="1"><span class="target-rings"><i></i><i></i><i></i><b>B</b></span><span class="target-label">Answer B</span></button>
+        <button class="answer-target" data-index="2"><span class="target-rings"><i></i><i></i><i></i><b>C</b></span><span class="target-label">Answer C</span></button>
+      </div>
+      <div id="feedbackPanel" class="feedback-panel hidden" role="status" aria-live="polite">
+        <div id="feedbackIcon" class="feedback-icon">✓</div>
+        <div class="feedback-copy"><strong id="feedbackTitle">Nice shot!</strong><p id="feedbackText"></p></div>
+        <button id="continueButton" class="primary-button">Continue →</button>
+      </div>
+      <div class="game-footer"><button id="gameHomeButton" class="text-button">← Exit to home</button><button id="restartButton" class="text-button">↻ Restart game</button></div>
+    </section>
+
+    <section id="resultsScreen" class="screen results-screen hidden">
+      <p class="eyebrow">MISSION COMPLETE</p>
+      <div id="resultMedal" class="result-medal" aria-hidden="true">✦</div>
+      <h2 id="resultHeading">You completed the quest!</h2>
+      <p id="resultLead" class="lead narrow">Let's see what you learned.</p>
+      <div class="result-stats">
+        <div><small>LEARNING SCORE</small><strong id="finalScore">0</strong></div>
+        <div><small>FIRST-TRY CORRECT</small><strong id="firstTryRate">0%</strong></div>
+        <div><small>QUESTIONS ANSWERED</small><strong id="answeredCount">12</strong></div>
+      </div>
+      <p class="results-note">Your learning score rewards correct understanding, not speed. Review the explanations below to strengthen your camera knowledge.</p>
+      <div id="reviewList" class="review-list"></div>
+      <div class="button-row results-actions"><button id="resultsHomeButton" class="secondary-button">Home</button><button id="playAgainButton" class="primary-button">Play again ↻</button></div>
+    </section>
+
+    <footer class="site-footer"><span>EXPOSURE QUEST</span><span>ISO · SHUTTER SPEED · APERTURE</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
